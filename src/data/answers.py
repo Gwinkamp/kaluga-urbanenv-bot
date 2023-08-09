@@ -1,8 +1,15 @@
 from aiogram import types
+
 from data.categiries import ALLOWED_PROBLEM_CATEGORIES
 
+START_ANSWER_MESSAGE_TEXT = (
+    'Привет! '
+    'Сюда ты можешь направить городскую проблему, '
+    'находящейся на территории твоего представительства.'
+)
 
-def starting_answer_message(text: str = 'Тестовое приветственное сообщение. Необходимо выбрать представительство'):
+
+def starting_answer_message(text: str = START_ANSWER_MESSAGE_TEXT + ' Для начала необходимо выбрать представительство'):
     return {
         'text': text,
         'reply_markup': types.ReplyKeyboardMarkup([
@@ -11,7 +18,7 @@ def starting_answer_message(text: str = 'Тестовое приветствен
     }
 
 
-def default_answer_message(text: str = 'Тестовое приветственное сообщение'):
+def default_answer_message(text: str = START_ANSWER_MESSAGE_TEXT):
     return {
         'text': text,
         'reply_markup': types.ReplyKeyboardMarkup([
@@ -37,7 +44,7 @@ def office_selection_answer_message(text: str = 'Выберите номер п�
 
 
 def problem_reporting_answer_message(text: str = 'Выберите категорию'):
-    markup = [ALLOWED_PROBLEM_CATEGORIES[i:i+2] for i in range(0, len(ALLOWED_PROBLEM_CATEGORIES), 2)]
+    markup = [ALLOWED_PROBLEM_CATEGORIES[i:i + 2] for i in range(0, len(ALLOWED_PROBLEM_CATEGORIES), 2)]
     markup.append([types.KeyboardButton('Отмена')])
     return {
         'text': text,
