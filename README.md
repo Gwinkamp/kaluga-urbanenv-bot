@@ -43,9 +43,10 @@ docker build -t {имя образа} .
 Запуск контейнера
 
 ```shell
-python run \
+docker run \
   -e BOT_TOKEN={токен телеграм бота} \
   -e BOT_ADMINS={список идентификаторов администраторов} \
   -e DB_CONNECTION_STRING={строка подключения к БД} \
+  --name {имя контейнера} \
   {имя образа}
 ```
